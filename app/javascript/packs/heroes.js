@@ -4,4 +4,6 @@
 //
 // <%= javascript_pack_tag 'hello_angular' %>
 
+import '../heroes/styles.scss';
+
 require('../heroes')
