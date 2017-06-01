@@ -3,22 +3,14 @@ import {Component, OnInit} from        '@angular/core';
 import {ActivatedRoute, Params } from  '@angular/router'
 import {Location} from                 '@angular/common'
 
-import { Hero }         from           './hero';
+import { Hero }         from           './models/hero';
 import { HeroService }  from           './hero.service';
+
+import templateString from './templates/hero-detail.component.html'
 
 @Component({
 	selector: 'hero-detail',
-	template: `
-	<div *ngIf="hero">
-  <h2>{{hero.name}} details!</h2>
-  <div><label>id: </label>{{hero.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name"/>
-  </div>
-  <button (click)="goBack()">Back</button>
-  </div>
-  `
+	template: templateString
 })
 export class HeroDetailComponent implements OnInit {
 
@@ -36,6 +28,12 @@ export class HeroDetailComponent implements OnInit {
      .subscribe(hero => this.hero = hero);
 
   }
+
+  save(): void {
+    this.heroService.update(this.hero).then(()=>this.goBack());
+
+  }
+
 
   goBack(): void {
     this.location.back();

@@ -1,20 +1,12 @@
 import { Component, OnInit } from '@angular/core'
-import { Hero } from './hero';
+import { Hero } from './models/hero';
 import { HeroService } from './hero.service';
+
+import templateString from './templates/dashboard.component.html'
 
 @Component({
 	selector: 'my-dashboard',
-	template: `<div id='dashboard'><h3>Top Heroes</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let hero of heroes" [routerLink]="['/detail', hero.id]" class="col-1-4">
-    <div class="module hero">
-      <h4>{{hero.name}}</h4>
-    </div>
-  </a>
-</div>
-</div>
-`
-
+	template: templateString
 })
 
 export class DashboardComponent implements OnInit {
